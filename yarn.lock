@@ -8083,10 +8083,10 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react-selectable-fast@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-selectable-fast/-/react-selectable-fast-3.0.0.tgz#24bd1bd10a840e852d3083505c1dddfa9bf5a374"
-  integrity sha512-RYUqLoWjVhYL+chR1ScaP1mR87+lcvXF+U+iyzI+c6c3o2GwSb71meDzSBzuG6xnU9Ehq5+AlgA+epFTypmXpw==
+react-selectable@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-selectable/-/react-selectable-2.0.2.tgz#e6cceebefb00c6c2512c289f8bc4f76269219ff8"
+  integrity sha512-ALRYd33UOZBlDU/1rez4WwKo7mf2yBngy0pXg6LoE9Df5oGjkyfQ774LbF+f5prIHC5lzPqPunOUR673cwSHkg==
 
 react-window@^1.8.5:
   version "1.8.5"

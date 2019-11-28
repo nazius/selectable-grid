@@ -1,14 +1,16 @@
 import React from 'react';
+import { createSelectable } from 'react-selectable';
 import './App.css';
 
+
 function selectableCell(props){
-  const { rowIndex, columnIndex } = props
+  const { rowIndex, columnIndex, selected} = props
 
   return (
-    <div className='cell'>
+    <div className={`cell ${selected ? 'selected' : ''}`}>
       Item {rowIndex},{columnIndex}
     </div>
   );
 }
 
-export default selectableCell;
+export default createSelectable(selectableCell);
