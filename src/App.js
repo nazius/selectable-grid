@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SelectableCell from './selectableCell'
+import { FixedSizeGrid as Grid } from 'react-window';
 
 function App() {
+  const Cell = ({ columnIndex, rowIndex, style }) => (
+    <div className='cell-container' style={style}>
+      <SelectableCell
+        rowIndex={rowIndex}
+        columnIndex={columnIndex}
+      />
+    </div>
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <Grid
+          columnCount={10}
+          rowCount={100}
+
+          columnWidth={100}
+          rowHeight={60}
+
+          height={600}
+          width={1080}
         >
-          Learn React
-        </a>
-      </header>
+
+          {Cell}
+
+
+        </Grid>
     </div>
   );
 }
