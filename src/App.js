@@ -13,7 +13,8 @@ class App extends React.Component {
   constructor (props) {
   	super(props);
   	this.state = {
-  		selectedKeys: []
+      selectedKeys: [],
+      lastSelectedValue: null,
   	};
   }
 
@@ -23,16 +24,56 @@ class App extends React.Component {
       this.setState({ selectedKeys });
     }
 
+    const handleShiftClick = (index, e) => {
+      const { selectedKeys, lastSelectedValue } = this.state
+
+
+      this.setState({
+        ...this.state,
+        selectedKeys: [...selectedKeys, index],
+        lastSelectedValue: index,
+      })
+
+
+      if(!e.shiftKey || !lastSelectedValue) return
+      // start of range selection
+
+
+      let rangeSelection = [];
+      let highValue = null
+      let lowValue = null
+
+      if(index > lastSelectedValue){
+        highValue = index
+        lowValue = lastSelectedValue
+      } else {
+        highValue = lastSelectedValue
+        lowValue = index
+      }
+
+      for (let i = lowValue; i <= highValue; i++) {
+        rangeSelection.push(i);
+      }
+
+      this.setState({
+        ...this.state,
+        selectedKeys: selectedKeys.concat(...rangeSelection), // probably duplicate values
+      })
+    }
+
     const Cell = ({ columnIndex, rowIndex, style }) =>  {
       const index = flatt2DIndexTo1D(columnIndex, rowIndex, columnCount)
       const selected = this.state.selectedKeys.indexOf(index) > -1
 
       return (
-          <div className='cell-container' style={style}>
+          <div
+            className='cell-container'
+            style={style}
+            onClick={handleShiftClick.bind(null, index)}
+          >
             <SelectableCell
               selectableKey={index}
               selectedKeys={this.state.selectedKeys}
-              
               selected={selected}
               rowIndex={rowIndex}
               columnIndex={columnIndex}
