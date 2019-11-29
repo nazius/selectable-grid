@@ -21,6 +21,7 @@ class App extends React.Component {
 
   render() {
     const handleSelection = (selectedKeys) => {
+      console.log('check')
       this.setState({ selectedKeys });
     }
 
